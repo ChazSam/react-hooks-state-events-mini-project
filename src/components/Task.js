@@ -1,13 +1,20 @@
 import React from "react";
 
-function Task() {
+function Task({text, category, tasks, setTasks}) {
+
+  function deleteTask(e){
+   const newTaskList =  tasks.filter((item)=> item.text !== e.target.value)
+    setTasks(newTaskList)
+  }
+
   return (
     <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
+      <button className="delete" onClick={deleteTask} value={text}>X</button>
     </div>
   );
 }
 
 export default Task;
+
